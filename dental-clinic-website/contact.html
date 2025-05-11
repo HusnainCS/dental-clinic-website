@@ -1,0 +1,85 @@
+<!-- contact.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - Azhar Dental Clinic</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">Azhar Dental Clinic</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="container">
+    <h2>Book an Appointment</h2>
+    <form id="appointmentForm" class="contact-form">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" required>
+
+      <label for="date">Preferred Date:</label>
+      <input type="date" id="date" required>
+
+      <label for="message">Your Message:</label>
+      <textarea id="message" rows="4"></textarea> 
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <h3>Our Location</h3>
+    <iframe src="https://maps.google.com/maps?q=lahore%20dental%20clinic&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+    <p>📞 WhatsApp us: <a href="https://wa.me/923365645890" target="_blank">+92 336 5645890</a></p>
+    <p>📍 Visit us: 123 Dental St, Lahore, Pakistan</p>
+    <p>✉️ Email us: <a href="mailto:info@azhardentalclinic.com">info@azhardentalclinic.com</a></p>
+    <p>🌐 Follow us on social media: 
+      <a href="https://facebook.com/azhardentalclinic" target="_blank">Facebook</a>, 
+      <a href="https://instagram.com/azhardentalclinic" target="_blank">Instagram</a>
+    </p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Azhar Dental Clinic. All rights reserved.</p>
+  </footer>
+  <script>
+    document.getElementById("appointmentForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+    
+      const data = {
+        name: document.getElementById("name").value,
+        phone: document.getElementById("phone").value,
+        date: document.getElementById("date").value,
+        message: document.getElementById("message").value
+      };
+    
+      fetch("https://script.google.com/macros/s/AKfycbzFs4mslkzprVxvrwczkwS3V2P5Yi3lSVAARCyy6y72XVso_NbX7ib5l5SU94VL2bpZ/exec", {
+        method: "POST",
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(response => {
+        alert("Appointment submitted successfully!");
+        document.getElementById("appointmentForm").reset();
+      })
+      .catch(err => {
+        alert("Failed to submit. Please try again.");
+      });
+    });
+    </script>
+    
+</body>
+</html>

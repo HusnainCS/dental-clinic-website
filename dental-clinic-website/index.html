@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Azhar Dental Clinic</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+  <header id="home">
+    <nav>
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home" class="home fade-in">
+    <div class="container">
+      <h1>Welcome to Azhar Dental Clinic</h1>
+      <p>Your smile is our top priority!</p>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services fade-in fade-in-delay">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="service">
+        <h3>Teeth Cleaning</h3>
+        <p>Regular cleaning to keep your teeth healthy and bright.</p>
+      </div>
+      <div class="service">
+        <h3>Fillings</h3>
+        <p>Get your cavities filled with long-lasting materials.</p>
+      </div>
+      <div class="service">
+        <h3>Teeth Whitening</h3>
+        <p>Get a brighter smile with our professional whitening treatments.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials fade-in fade-in-delay-2">
+    <div class="container">
+      <h2>What Our Patients Say</h2>
+      <div class="testimonial">
+        <p>"Best dental experience! The team made me feel comfortable and at ease."</p>
+        <span>- John Doe</span>
+      </div>
+      <div class="testimonial">
+        <p>"I had a great experience with the staff. Highly recommend them for any dental work!"</p>
+        <span>- Jane Smith</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section id="contact" class="contact fade-in fade-in-delay-3">
+    <div class="container">
+      <h2>Book an Appointment</h2>
+      <form id="appointmentForm" class="contact-form">
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+        <input type="tel" id="phone" name="phone" placeholder="Your Phone" required>
+        <input type="date" id="date" name="date" required>
+        <textarea id="message" name="message" placeholder="Your Message (Optional)" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="back-to-top">↑</button>
+
+  <footer>
+    <p>&copy; 2025 Azhar Dental Clinic. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Form Submission
+    document.getElementById("appointmentForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const data = {
+        name: document.getElementById("name").value,
+        phone: document.getElementById("phone").value,
+        date: document.getElementById("date").value,
+        message: document.getElementById("message").value
+      };
+
+      fetch("https://script.google.com/macros/s/AKfycbzFs4mslkzprVxvrwczkwS3V2P5Yi3lSVAARCyy6y72XVso_NbX7ib5l5SU94VL2bpZ/exec", {
+        method: "POST",
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(response => {
+        alert("Thank you for your appointment request! We'll get back to you soon.");
+        document.getElementById("appointmentForm").reset();
+      })
+      .catch(err => {
+        alert("Failed to submit. Please try again.");
+      });
+    });
+
+    // Back to Top Button
+    window.onscroll = function () {
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        document.getElementById("back-to-top").style.display = "block";
+      } else {
+        document.getElementById("back-to-top").style.display = "none";
+      }
+    };
+
+    document.getElementById("back-to-top").addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+
+</body>
+</html>
